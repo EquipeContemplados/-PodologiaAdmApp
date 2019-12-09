@@ -38,51 +38,41 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'perfilServicos/:id',
+        path: 'perfilAgendamento/:id',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/perfil-servicos/perfil-servicos.module').then(m => m.PerfilServicosPageModule)
+              import('../pages/perfil-agendamento/perfil-agendamento.module').then(m => m.PerfilAgendamentoPageModule)
           }
         ]
       },
       {
-        path: 'addServico/:id',
+        path: 'addAgendamento/:id',
         children: [
           {
             path: '',
-            loadChildren: () => import('../pages/add-servico/add-servico.module').then(m => m.AddServicoPageModule)
+            loadChildren: () => import('../pages/add-agendamento/add-agendamento.module').then(m => m.AddAgendamentoPageModule)
           }
         ]
       },
       {
-        path: 'addServico',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/add-servico/add-servico.module').then(m => m.AddServicoPageModule)
-          }
-        ]
-      },
-      {
-        path: 'listServicos',
+        path: 'addAgendamento',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/list-servicos/list-servicos.module').then(m => m.ListServicosPageModule)
+              import('../pages/add-agendamento/add-agendamento.module').then(m => m.AddAgendamentoPageModule)
           }
         ]
       },
       {
-        path: 'listAgenda',
+        path: 'listAgendamento',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/list-agenda/list-agenda.module').then(m => m.ListAgendaPageModule)
+              import('../pages/list-agendamento/list-agendamento.module').then(m => m.ListAgendamentoPageModule)
           }
         ]
       },

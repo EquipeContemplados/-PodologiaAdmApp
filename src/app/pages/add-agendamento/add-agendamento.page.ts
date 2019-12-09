@@ -1,19 +1,19 @@
   
 import { Component, OnInit } from '@angular/core';
-import { Servico } from 'src/app/model/servico';
-import { ServicoService } from 'src/app/service/servicos.service';
+import { Agendamento } from 'src/app/model/agendamento';
+import { AgendamentoService } from 'src/app/service/agendamento.service';
 import { AlertController, Platform } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-servico',
-  templateUrl: './add-servico.page.html',
-  styleUrls: ['./add-servico.page.scss'],
+  selector: 'app-add-agendamento',
+  templateUrl: './add-agendamento.page.html',
+  styleUrls: ['./add-agendamento.page.scss'],
 })
 
-export class AddServicoPage implements OnInit {
+export class AddAgendamentoPage implements OnInit {
 
-  protected servico: Servico = new Servico;
+  protected agendamento: Agendamento = new Agendamento;
   protected id: any = null;
 
   slideOpts = {
@@ -23,7 +23,7 @@ export class AddServicoPage implements OnInit {
   };
 
   constructor(
-    protected servicoService: ServicoService,
+    protected agendamentoService: AgendamentoService,
     protected alertController: AlertController,
     protected activedRoute: ActivatedRoute,
     protected router: Router,
@@ -33,9 +33,9 @@ export class AddServicoPage implements OnInit {
   ngOnInit() {
     this.id = this.activedRoute.snapshot.paramMap.get("id");
     if (this.id) {
-      this.servicoService.get(this.id).subscribe(
+      this.agendamentoService.get(this.id).subscribe(
         res => {
-          this.servico = res
+          this.agendamento = res
         },
         //erro => this.id = null
       )
@@ -44,18 +44,18 @@ export class AddServicoPage implements OnInit {
 
   onsubmit(form) {
     if (!this.id) {
-      this.servicoService.save(this.servico).then(
+      this.agendamentoService.save(this.agendamento).then(
         res => {
           form.reset();
-          this.servico = new Servico;
+          this.agendamento = new Agendamento;
           //console.log("Cadastrado!");
           //this.preview = null
-          this.presentAlert("Aviso", "Cadastrado!")
+          this.presentAlert("Aviso", "Agendado!")
           this.router.navigate(['', res.id]);
         },
         erro => {
           console.log("Erro: " + erro);
-          this.presentAlert("Erro", "Não foi possivel cadastrar!")
+          this.presentAlert("Erro", "Não foi possivel agendar!")
         }
       )
     }

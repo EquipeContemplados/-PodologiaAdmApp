@@ -1,41 +1,41 @@
 import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServicoService } from 'src/app/service/servicos.service';
+import { AgendamentoService } from 'src/app/service/agendamento.service';
 
 @Component({
-  selector: 'app-list-servicos',
-  templateUrl: './list-servicos.page.html',
-  styleUrls: ['./list-servicos.page.scss'],
+  selector: 'app-list-agendamento',
+  templateUrl: './list-agendamento.page.html',
+  styleUrls: ['./list-agendamento.page.scss'],
 })
 
-export class ListServicosPage implements OnInit {
+export class ListAgendamentoPage implements OnInit {
 
-  protected servico: any;
+  protected agendamento: any;
 
   constructor(
-    protected servicoService: ServicoService,
+    protected agendamentoService: AgendamentoService,
     protected router: Router,
     protected alertController: AlertController
   ) { }
 
   ngOnInit() {
-    this.servicoService.getAll().subscribe(
+    this.agendamentoService.getAll().subscribe(
       res => {
-        this.servico = res;
+        this.agendamento = res;
       }
     )
   }
 
-  editar(servico) {
-    this.router.navigate(['/tabs/addServico/', servico.key])
+  editar(agendamento) {
+    this.router.navigate(['/tabs/addAgendamento/', agendamento.key])
   }
 
   async doRefresh(event) {
     //console.log('Begin async operation');
-    this.servicoService.getAll().subscribe(
+    this.agendamentoService.getAll().subscribe(
       res => {
-        this.servico = res;
+        this.agendamento = res;
         setTimeout(() => {
           //console.log('Async operation has ended');
           event.target.complete();
@@ -44,7 +44,7 @@ export class ListServicosPage implements OnInit {
     );
   }
 
-  async apagar(servico) {
+  async apagar(agendamento) {
     const alert = await this.alertController.create({
       header: 'Apagar dados!',
       message: 'Apagar todos os dados da filial',
@@ -59,7 +59,7 @@ export class ListServicosPage implements OnInit {
         }, {
           text: 'Sim',
           handler: () => {
-            this.servicoService.remove(servico).then(
+            this.agendamentoService.remove(agendamento).then(
               res => {
                 this.presentAlert("Aviso", "Apagado com sucesso!");
                 this.refreshFilias();
@@ -76,9 +76,9 @@ export class ListServicosPage implements OnInit {
   }
 
   refreshFilias() {
-    this.servicoService.getAll().subscribe(
+    this.agendamentoService.getAll().subscribe(
       res => {
-        this.servico = res;
+        this.agendamento = res;
       }
     )
   }

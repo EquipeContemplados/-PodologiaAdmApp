@@ -7,20 +7,16 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'list-agenda',
-    loadChildren: () => import('./pages/list-agenda/list-agenda.module').then( m => m.ListAgendaPageModule)
+    path: 'list-agendamento',
+    loadChildren: () => import('./pages/list-agendamento/list-agendamento.module').then( m => m.ListAgendamentoPageModule)
   },
   {
-    path: 'add-servico',
-    loadChildren: () => import('./pages/add-servico/add-servico.module').then( m => m.AddServicoPageModule)
+    path: 'add-agendamento',
+    loadChildren: () => import('./pages/add-agendamento/add-agendamento.module').then( m => m.AddAgendamentoPageModule)
   },
   {
-    path: 'list-servicos',
-    loadChildren: () => import('./pages/list-servicos/list-servicos.module').then( m => m.ListServicosPageModule)
-  },
-  {
-    path: 'perfil-servico',
-    loadChildren: () => import('./pages/perfil-servicos/perfil-servicos.module').then( m => m.PerfilServicosPageModule)
+    path: 'perfil-agendamento',
+    loadChildren: () => import('./pages/perfil-agendamento/perfil-agendamento.module').then( m => m.PerfilAgendamentoPageModule)
   },
 ];
 @NgModule({

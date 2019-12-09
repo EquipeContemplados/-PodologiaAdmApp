@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { PerfilServicosPage } from './perfil-servicos.page';
+import { PerfilAgendamentoPage } from './perfil-agendamento.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PerfilServicosPage
+    component: PerfilAgendamentoPage
   }
 ];
 
@@ -19,6 +19,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PerfilServicosPage]
+  declarations: [PerfilAgendamentoPage]
 })
-export class PerfilServicosPageModule {}
+export class PerfilAgendamentoPageModule {}

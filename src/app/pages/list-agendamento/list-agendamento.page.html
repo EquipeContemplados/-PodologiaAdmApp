@@ -13,7 +13,7 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list *ngIf="filias">
+  <ion-list *ngIf="agendamento">
     <ion-item-sliding *ngFor="let a of agendamento">
       <ion-item-options side="start">
         <ion-item-option color="" (click)="editar(a)">
@@ -24,7 +24,7 @@
       <ion-item routerLink="/tabs/perfilAgendamento/{{a.key}}">
         
         <ion-label>{{ a.nome }}</ion-label>
-        <ion-label>{{ a.descricao }}</ion-label>
+        <ion-label>{{ a.procedimento }}</ion-label>
 
       </ion-item>
 
