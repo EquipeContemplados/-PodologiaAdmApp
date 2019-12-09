@@ -38,6 +38,55 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'perfilServicos/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/perfil-servicos/perfil-servicos.module').then(m => m.PerfilServicosPageModule)
+          }
+        ]
+      },
+      {
+        path: 'addServico/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../pages/add-servico/add-servico.module').then(m => m.AddServicoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'addServico',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/add-servico/add-servico.module').then(m => m.AddServicoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'listServicos',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/list-servicos/list-servicos.module').then(m => m.ListServicosPageModule)
+          }
+        ]
+      },
+      {
+        path: 'listAgenda',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/list-agenda/list-agenda.module').then(m => m.ListAgendaPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
