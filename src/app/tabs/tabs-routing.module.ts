@@ -18,26 +18,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-          }
-        ]
-      },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
-      },
-      {
         path: 'perfilAgendamento/:id',
         children: [
           {
@@ -67,12 +47,42 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'addContato',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/add-contato/add-contato.module').then(m => m.AddContatoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'addContato/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/add-contato/add-contato.module').then(m => m.AddContatoPageModule)
+          }
+        ]
+      },
+      {
         path: 'listAgendamento',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../pages/list-agendamento/list-agendamento.module').then(m => m.ListAgendamentoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'listContato',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/list-contato/list-contato.module').then(m => m.ListContatoPageModule)
           }
         ]
       },

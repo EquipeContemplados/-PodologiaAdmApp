@@ -1,41 +1,41 @@
 import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AgendamentoService } from 'src/app/service/agendamento.service';
+import { ContatoService } from 'src/app/service/contato';
 
 @Component({
-  selector: 'app-list-agendamento',
-  templateUrl: './list-agendamento.page.html',
-  styleUrls: ['./list-agendamento.page.scss'],
+  selector: 'app-list-contato',
+  templateUrl: './list-contato.page.html',
+  styleUrls: ['./list-contato.page.scss'],
 })
 
-export class ListAgendamentoPage implements OnInit {
+export class ListContatoPage implements OnInit {
 
-  protected agendamento: any;
+  protected contato: any;
 
   constructor(
-    protected agendamentoService: AgendamentoService,
+    protected contatoService: ContatoService,
     protected router: Router,
     protected alertController: AlertController
   ) { }
 
   ngOnInit() {
-    this.agendamentoService.getAll().subscribe(
+    this.contatoService.getAll().subscribe(
       res => {
-        this.agendamento = res;
+        this.contato = res;
       }
     )
   }
 
-  editar(agendamento) {
-    this.router.navigate(['/tabs/addAgendamento/', agendamento.key])
+  editar(contato) {
+    this.router.navigate(['/tabs/addContato/', contato.key])
   }
 
   async doRefresh(event) {
     //console.log('Begin async operation');
-    this.agendamentoService.getAll().subscribe(
+    this.contatoService.getAll().subscribe(
       res => {
-        this.agendamento = res;
+        this.contato = res;
         setTimeout(() => {
           //console.log('Async operation has ended');
           event.target.complete();
@@ -44,7 +44,7 @@ export class ListAgendamentoPage implements OnInit {
     );
   }
 
-  async apagar(agendamento) {
+  async apagar(contato) {
     const alert = await this.alertController.create({
       header: 'Apagar dados!',
       message: 'Apagar todos os dados da filial',
@@ -59,10 +59,10 @@ export class ListAgendamentoPage implements OnInit {
         }, {
           text: 'Sim',
           handler: () => {
-            this.agendamentoService.remove(agendamento).then(
+            this.contatoService.remove(contato).then(
               res => {
                 this.presentAlert("Aviso", "Apagado com sucesso!");
-                this.refreshAgendamento();
+                this.refreshContato();
               },
               erro => {
                 this.presentAlert("Erro", "Ao apagar o item!");
@@ -75,10 +75,10 @@ export class ListAgendamentoPage implements OnInit {
     await alert.present();
   }
 
-  refreshAgendamento() {
-    this.agendamentoService.getAll().subscribe(
+  refreshContato() {
+    this.contatoService.getAll().subscribe(
       res => {
-        this.agendamento = res;
+        this.contato = res;
       }
     )
   }

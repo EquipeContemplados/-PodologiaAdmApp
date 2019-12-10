@@ -1,19 +1,19 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Agendamento } from 'src/app/model/agendamento';
-import { AgendamentoService } from 'src/app/service/agendamento.service';
+import { Contato } from 'src/app/model/contato';
+import { ContatoService } from 'src/app/service/contato';
 import { AlertController, Platform } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-agendamento',
-  templateUrl: './add-agendamento.page.html',
-  styleUrls: ['./add-agendamento.page.scss'],
+  selector: 'app-add-contato',
+  templateUrl: './add-contato.page.html',
+  styleUrls: ['./add-contato.page.scss'],
 })
 
-export class AddAgendamentoPage implements OnInit {
+export class AddContatoPage implements OnInit {
 
-  protected agendamento: Agendamento = new Agendamento;
+  protected contato: Contato = new Contato;
   protected id: any = null;
 
   slideOpts = {
@@ -23,7 +23,7 @@ export class AddAgendamentoPage implements OnInit {
   };
 
   constructor(
-    protected agendamentoService: AgendamentoService,
+    protected contatoService: ContatoService,
     protected alertController: AlertController,
     protected activedRoute: ActivatedRoute,
     protected router: Router,
@@ -33,9 +33,9 @@ export class AddAgendamentoPage implements OnInit {
   ngOnInit() {
     this.id = this.activedRoute.snapshot.paramMap.get("id");
     if (this.id) {
-      this.agendamentoService.get(this.id).subscribe(
+      this.contatoService.get(this.id).subscribe(
         res => {
-          this.agendamento = res
+          this.contato = res
         },
         //erro => this.id = null
       )
@@ -44,14 +44,14 @@ export class AddAgendamentoPage implements OnInit {
 
   onsubmit(form) {
     if (!this.id) {
-      this.agendamentoService.save(this.agendamento).then(
+      this.contatoService.save(this.contato).then(
         res => {
           form.reset();
-          this.agendamento = new Agendamento;
+          this.contato = new Contato;
           //console.log("Cadastrado!");
           //this.preview = null
           this.presentAlert("Aviso", "Agendado!")
-          this.router.navigate(['/tabs/perfilAgendamento', res.id]);
+          this.router.navigate(['/tabs/perfilContato', res.id]);
         },
         erro => {
           console.log("Erro: " + erro);
@@ -59,13 +59,13 @@ export class AddAgendamentoPage implements OnInit {
         }
       )
     } else {
-      this.agendamentoService.update(this.agendamento, this.id).then(
+      this.contatoService.update(this.contato, this.id).then(
         res => {
           form.reset();
-          this.agendamento = new Agendamento;
+          this.contato = new Contato;
           //this.preview = null
           this.presentAlert("Aviso", "Atualizado!")
-          this.router.navigate(['/tabs/perfilAgendamento', this.id]);
+          this.router.navigate(['/tabs/perfilContato', this.id]);
         },
         erro => {
           console.log("Erro: " + erro);

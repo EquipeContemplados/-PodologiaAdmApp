@@ -37,7 +37,7 @@ export class AgendamentoService {
   get(id) {
     return this.fire.collection("agendamento").doc<Agendamento>(id).valueChanges();
   }
-  update(agendamento: Agendamento, id: string) {
+  update(agendamento: Agendamento, id: string ) {
     return this.fire.collection("agendamento").doc<Agendamento>(id)
     .update(agendamento);
   }

@@ -18,6 +18,18 @@ const routes: Routes = [
     path: 'perfil-agendamento',
     loadChildren: () => import('./pages/perfil-agendamento/perfil-agendamento.module').then( m => m.PerfilAgendamentoPageModule)
   },
+  {
+    path: 'list-contato',
+    loadChildren: () => import('./pages/list-contato/list-contato.module').then( m => m.ListContatoPageModule)
+  },
+  {
+    path: 'add-contato',
+    loadChildren: () => import('./pages/add-contato/add-contato.module').then( m => m.AddContatoPageModule)
+  },
+  {
+    path: 'perfil-contato',
+    loadChildren: () => import('./pages/perfil-contato/perfil-contato.module').then( m => m.PerfilContatoPageModule)
+  },
 ];
 @NgModule({
   imports: [
