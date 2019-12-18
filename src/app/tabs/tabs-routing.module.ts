@@ -57,6 +57,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'addProfissional',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/add-profissional/add-profissional.module').then(m => m.AddProfissionalPageModule)
+          }
+        ]
+      },
+      {
+        path: 'addProfissional/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/add-profissional/add-profissional.module').then(m => m.AddProfissionalPageModule)
+          }
+        ]
+      },
+      {
         path: 'addContato/:id',
         children: [
           {
@@ -83,6 +103,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/list-contato/list-contato.module').then(m => m.ListContatoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'listProfissional',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/list-profissional/list-profissional.module').then(m => m.ListProfissionalPageModule)
           }
         ]
       },

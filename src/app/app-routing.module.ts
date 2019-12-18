@@ -30,6 +30,14 @@ const routes: Routes = [
     path: 'perfil-contato',
     loadChildren: () => import('./pages/perfil-contato/perfil-contato.module').then( m => m.PerfilContatoPageModule)
   },
+  {
+    path: 'list-profissional',
+    loadChildren: () => import('./pages/list-profissional/list-profissional.module').then( m => m.ListProfissionalPageModule)
+  },
+  {
+    path: 'add-profissional',
+    loadChildren: () => import('./pages/add-profissional/add-profissional.module').then( m => m.AddProfissionalPageModule)
+  },
 ];
 @NgModule({
   imports: [
